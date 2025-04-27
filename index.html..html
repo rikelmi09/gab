@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gaby</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ffdde1, #ee9ca7);
+            overflow: hidden;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            color: #fff;
+        }
+        h1 {
+            margin-top: 50px;
+            font-size: 3em;
+        }
+        p {
+            font-size: 1.5em;
+        }
+        .heart {
+            color: red;
+            font-size: 2em;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .balloon {
+            width: 50px;
+            height: 70px;
+            background: pink;
+            border-radius: 50% 50% 50% 50%;
+            position: absolute;
+            bottom: -100px;
+            animation: floatUp 10s infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-120vh); }
+        }
+        #surpriseBtn {
+            margin-top: 30px;
+            padding: 15px 25px;
+            font-size: 1.2em;
+            background-color: #ff6f91;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        #surpriseBtn:hover {
+            background-color: #ff3c6f;
+        }
+        #secretMessage {
+            margin-top: 30px;
+            display: none;
+            font-size: 1.5em;
+            background-color: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Feliz Aniversário, Gaby!</h1>
+    <p>Hoje é um dia muito especial</p>
+    <p>Te desejo toda a felicidade do mundo <span class="heart">❤</span></p>
+    <p>Aproveite o seu dia e se cuide sempre,bjaooo</p> 
+
+    <button id="surpriseBtn" onclick="showSurprise()">Clique aqui para uma surpresa</button>
+
+    <div id="secretMessage">
+        Ninguem vence um homem paciente, eu vou te namorarKKKKKKK.
+    </div>
+
+    <script>
+        function showSurprise() {
+            document.getElementById('secretMessage').style.display = 'block';
+        }
+
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.backgroundColor = randomColor();
+            balloon.style.animationDuration = (5 + Math.random() * 5) + 's';
+            document.body.appendChild(balloon);
+
+            setTimeout(() => {
+                balloon.remove();
+            }, 10000);
+        }
+
+        function randomColor() {
+            const colors = ['#ff6f91', '#ff9671', '#ffc75f', '#f9f871', '#d65db1'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        setInterval(createBalloon, 500);
+    </script>
+
+</body>
+</html>
